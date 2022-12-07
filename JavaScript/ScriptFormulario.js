@@ -46,12 +46,10 @@ function validarForm(){
     }else{
         formValido = true;
     }
-
-    const doacaoUm = document.getElementById("um");
-    const doacaoCinco = document.getElementById("cinco");
-    const doacaoDez = document.getElementById("dez");
-    const doacaoVinte = document.getElementById("vinte");
     
+    const inputSelecionado = document.querySelector("input[name = 'doacao']:checked");
+    const radioInputs = document.querySelectorAll("input[name = 'doacao']");
+
     if(!doacaoUm.checked && !doacaoCinco.checked && !doacaoDez.checked && !doacaoVinte.checked){
         spanDoacao.textContent = "Nenhuma opção de doacao marcada";
         formValido = false;
@@ -65,20 +63,15 @@ function validarForm(){
         nome.disabled = formValido;
         sobrenome.disabled = formValido;
         email.disabled = formValido;
-        doacaoUm.disabled = formValido;
-        doacaoCinco.disabled = formValido;
-        doacaoDez.disabled = formValido;
-        doacaoVinte.disabled = formValido;
+        radioInputs.forEach((input)=>{
+            input.disabled = formValido;
+        })
         btnEditar.disabled = false;
         btnEditar.style.cursor= "pointer";
     }
      btnSubmeter.disabled = !formValido;
      btnSubmeter.style.cursor = "pointer";
     
-
-
-
-
 
     const resultado = document.getElementById("spanResultado");
 
@@ -96,7 +89,7 @@ function validarForm(){
                 <td>${nome.value}</td>
                 <td>${sobrenome.value}</td>
                 <td>${email.value}</td>
-                <td>${doacaoUm.checked ? 'R$ 1.00' : doacaoCinco.checked ? 'R$ 5.00' : doacaoDez.checked ? 'R$10.00' : doacaoVinte.checked ? 'R$20.00' : 'undefined'}
+                <td>R$${inputSelecionado.value}.00</td>
             </tr>
         </tbody>
     </table>
@@ -112,18 +105,14 @@ function religar(){
     const nome = document.getElementById("nome");
     const sobrenome = document.getElementById("sobrenome");
     const email = document.getElementById("email");
-    const doacaoUm = document.getElementById("um");
-    const doacaoCinco = document.getElementById("cinco");
-    const doacaoDez = document.getElementById("dez");
-    const doacaoVinte = document.getElementById("vinte");
+    const radioInputs = document.querySelectorAll("input[name = 'doacao']");
 
     nome.disabled = false;
     sobrenome.disabled = false;
     email.disabled = false;
-    doacaoUm.disabled = false;
-    doacaoCinco.disabled = false;
-    doacaoDez.disabled = false;
-    doacaoVinte.disabled = false;
+    radioInputs.forEach((input)=>{
+        input.disabled = false;
+    })
     btnEditar.disabled = true;
     btnSubmeter.disabled = true;
 
