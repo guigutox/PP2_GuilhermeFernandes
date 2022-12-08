@@ -31,7 +31,7 @@
     <h1>Formulario para doação</h1>
 
 <section id="section-form">
-    <form   id="formulario">
+    <form   id="formulario" >
         <div>
             <label for="nome">Nome:</label><br>
             <input type="text" id="nome" name="nome">
@@ -50,7 +50,7 @@
             <input type="radio" name="doacao" id="um" value = "1">R$1<br>
             <input type="radio" name="doacao" id="cinco" value = "5">R$5 <br>
             <input type="radio" name="doacao" id="dez" value = "10">R$10 <br>
-            <input type="radio" name="doacao" id="vinte" value = "20">R$20 <br>
+            <input type="radio" name="doacao" id="vinte" value = "20">R$20 <br> <br>
             <span id="spanDoacao"></span>
         </div>
 
@@ -61,9 +61,9 @@
 
         <div>
            <br> <input type="reset" value="Limpar" style="background-color: rgb(117, 212, 117); border-radius: 5px 4px; width: 100px; height: 30px; cursor: pointer;">
-           <input id="submeter" type="submit" value="Enviar" style="background-color: rgb(117, 212, 117); border-radius: 5px 4px; width: 100px; height: 30px; cursor: pointer;">
-           <button id="btn-verifica" onclick="validarForm()">Verificar</button>
-           <button id="btn-editar" onclick="religar()">Editar</button>
+           <button id="submeter" class="btn btn-envia" type="submit" value="Enviar" >Enviar</button>
+           <button id="btn-verifica" class="btn btn-verifica" onclick="validarForm()">Verificar</button>
+           <button id="btn-editar" class="btn btn-editar"onclick="religar()">Editar</button>
         </div>
         
         

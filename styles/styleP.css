@@ -191,11 +191,11 @@ tr>td {
     color: whitesmoke;
 }
 
-#section-form {
+#section-form{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60vh;
+    height: 70vh;
 }
 
 
@@ -292,13 +292,7 @@ tr>td {
 
 }
 
-#btn-verifica{
-    background-color: red; 
-    border-radius: 5px 4px; width: 100px;
-    height: 30px;
-    color: #24252a;
-    cursor: pointer;
-}
+
 
 #tabela{
   border-color: rgba(117, 212, 117, 1);
@@ -306,11 +300,33 @@ tr>td {
   font-size: 0.9rem;
 }
 
-#btn-editar{
-    background-color: yellow; 
+
+span{
+    color: rgb(230, 0, 0);
+    font-weight: 600;
+    
+}
+
+.btn{
+
     border-radius: 5px 4px; width: 100px;
     height: 30px;
     color: #24252a;
     cursor: pointer;
 }
 
+.btn:disabled{
+    background-color:gray;
+    cursor: default;
+}
+
+.btn-verifica{
+    background-color: red; 
+}
+
+.btn-editar{
+    background-color: yellow; 
+}
+.btn-envia{
+    background-color: rgba(117, 212, 117, 1);
+}
