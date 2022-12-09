@@ -321,7 +321,7 @@ span{
 }
 
 .btn-verifica{
-    background-color: red; 
+    background-color: rgb(0, 153, 255); 
 }
 
 .btn-editar{
@@ -329,4 +329,8 @@ span{
 }
 .btn-envia{
     background-color: rgba(117, 212, 117, 1);
+}
+
+.btn-limpar{
+    background-color:  rgb(212, 30, 30);
 }

@@ -5,13 +5,22 @@ btnEditar.disabled = true;
 const btnSubmeter = document.getElementById("submeter");
 btnSubmeter.disabled = true;
 //Declarando botão de submissao e tornando ele desabilitado
+const btnLimpar = document.getElementById("limpar");
+btnLimpar.disabled = false;
 
+const btnValidar = document.getElementById("btn-verifica");
+btnValidar.disabled = false;
 
+btnLimpar.addEventListener('click',limpar);
+btnEditar.addEventListener('click', religar);
+btnValidar.addEventListener('click', validarForm)
+
+const validou = false;
 
 function validarForm(){
 
  
-    var formValido = false;
+    var formValido = true;
     event.preventDefault();
     //Impede que a pagina de reload
 
@@ -20,6 +29,7 @@ function validarForm(){
     
     btnSubmeter.disabled = true;
     btnEditar.disabled = true;
+
     const spanNome = document.getElementById("spanNome");
     const spanSobrenome = document.getElementById("spanSobre");
     const spanEmail = document.getElementById("spanEmail");
@@ -37,42 +47,29 @@ function validarForm(){
     const email = document.getElementById("email");
     //Pegando os campos do formulario
 
-
-    if(nome.value === ""){
-        spanNome.textContent = "ERRO DIGITE O NOME DA FORMA CERTA";
-        formValido = false;
-        //Verifica se o campo nome esta vazio, se estiver errado exibe mensagem de erro
-    }else{
-        formValido = true;
-    }
-    if(sobrenome.value === ""){
-        spanSobrenome.textContent = "ERRO DIGITE O SOBRENOME DA FORMA CERTA";
-        formValido = false;
-        //Verifica se o campo de sobrenome esta vazio, se estiver errado exibe mensagem de erro
-    }else{
-        formValido = true;
-    }
-    if(email.value === ""){
-        spanEmail.textContent = "ERRO AO VALIDAR EMAIL";
-        formValido = false;
-        //Verifica se o campo de email esta vazio, se estiver errado exibe mensagem de erro
-    }else{
-        formValido = true;
-    }
-    
     const inputSelecionado = document.querySelector("input[name = 'doacao']:checked");
     //Recebe a partir do querySelector o imput de doacao que foi checkado
     const radioInputs = document.querySelectorAll("input[name = 'doacao']");
     //Recebe todos os inputs como o name doacao
+    let erros = [];
 
-    if(inputSelecionado === null){
-        spanDoacao.textContent = "Nenhuma opção de doacao marcada";
+    if(!nome.value){
+        erros.push({span: spanNome, menssagem: "ERRO DIGITE O NOME DA FORMA CERTA"})
         formValido = false;
-        //verifica se um campo foi marcado, se nao estiver exibe mensagem de erro
-
-    }else{
-        formValido = true;
+    }if(!sobrenome.value){
+        erros.push({span: spanSobrenome, menssagem: "ERRO DIGITE O SOBRENOME DA FORMA CERTA"})
+        formValido = false;
+    }if(!email.value){
+        erros.push({span: spanEmail, menssagem: "ERRO AO VALIDAR EMAIL"})
+        formValido = false;
+    }if(inputSelecionado === null){
+        erros.push({span: spanDoacao, menssagem: "NENHUMA OPÇÃO DE DOACAO MARCADA"})
+        formValido = false;
     }
+
+    erros.forEach((erro)=>{
+        erro.span.textContent = erro.menssagem;
+    })
 
     const resultado = document.getElementById("spanResultado");
 
@@ -84,9 +81,9 @@ function validarForm(){
         radioInputs.forEach((input)=>{
             alternaBtn(input, true);
         })
+
         btnEditar.disabled = false;
         btnSubmeter.disabled = false;
-
 
         resultado.innerHTML = `
         <table id="tabela"  border = 1>
@@ -106,10 +103,8 @@ function validarForm(){
             </tbody>
         </table>
     `
-
-
+        btnLimpar.disabled = true;
     }
-
  
 }
 
@@ -131,10 +126,24 @@ function religar(){
     })
     btnEditar.disabled = true;
     btnSubmeter.disabled = true;
+    btnLimpar.disabled = false;
     //Desabilita os botoes
 
 }
 
 function alternaBtn(btn, estado){
         btn.disabled = estado;
+}
+
+function limpar(){
+
+
+    const nome = document.getElementById("nome");
+    const sobrenome = document.getElementById("sobrenome");
+    const email = document.getElementById("email");
+    const radioInputs = document.querySelectorAll("input[name = 'doacao']");
+
+    nome.value = "";
+    sobrenome.value = "";
+    email.value = "";
 }
