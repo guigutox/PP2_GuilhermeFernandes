@@ -60,7 +60,7 @@ function validarForm(){
         erros.push({span: spanSobrenome, menssagem: "ERRO DIGITE O SOBRENOME DA FORMA CERTA"})
         formValido = false;
     }if(!email.value){
-        erros.push({span: spanEmail, menssagem: "ERRO AO VALIDAR EMAIL"})
+        erros.push({span: spanEmail, menssagem: "ERRO AO VALIDAR EMAIL, CAMPO VAZIO"})
         formValido = false;
     }if(inputSelecionado === null){
         erros.push({span: spanDoacao, menssagem: "NENHUMA OPÇÃO DE DOACAO MARCADA"})
