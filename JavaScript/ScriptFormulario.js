@@ -11,6 +11,7 @@ btnLimpar.disabled = false;
 const btnValidar = document.getElementById("btn-verifica");
 btnValidar.disabled = false;
 
+
 btnLimpar.addEventListener('click',limpar);
 btnEditar.addEventListener('click', religar);
 btnValidar.addEventListener('click', validarForm)
@@ -42,10 +43,16 @@ function validarForm(){
     spanDoacao.textContent = "";
     //Setando como vazio os campos 
 
+    
+
     const nome = document.getElementById("nome");
     const sobrenome = document.getElementById("sobrenome");
     const email = document.getElementById("email");
     //Pegando os campos do formulario
+
+    nome.style.borderColor = 'rgba(117, 212, 117, 1)';
+    sobrenome.style.borderColor = 'rgba(117, 212, 117, 1)';
+    email.style.borderColor = 'rgba(117, 212, 117, 1)';
 
     const inputSelecionado = document.querySelector("input[name = 'doacao']:checked");
     //Recebe a partir do querySelector o imput de doacao que foi checkado
@@ -53,14 +60,19 @@ function validarForm(){
     //Recebe todos os inputs como o name doacao
     let erros = [];
 
+
     if(!nome.value){
-        erros.push({span: spanNome, menssagem: "ERRO DIGITE O NOME DA FORMA CERTA"})
+        erros.push({span: spanNome, menssagem: "ERRO DIGITE O NOME DA FORMA CERTA"});
+        nome.style.borderColor = ' rgb(230, 0, 0)';
         formValido = false;
     }if(!sobrenome.value){
         erros.push({span: spanSobrenome, menssagem: "ERRO DIGITE O SOBRENOME DA FORMA CERTA"})
+        sobrenome.style.borderColor = ' rgb(230, 0, 0)';
         formValido = false;
+
     }if(!email.value){
         erros.push({span: spanEmail, menssagem: "ERRO AO VALIDAR EMAIL, CAMPO VAZIO"})
+        email.style.borderColor = ' rgb(230, 0, 0)';
         formValido = false;
     }if(inputSelecionado === null){
         erros.push({span: spanDoacao, menssagem: "NENHUMA OPÇÃO DE DOACAO MARCADA"})
